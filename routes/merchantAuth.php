@@ -23,7 +23,7 @@ Route::middleware('guest:merchant')->group(function () {
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('merchant')->group(function () {
     // Route::get('verify-email', EmailVerificationPromptController::class)
     //     ->name('verification.notice');
 
@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     // Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     //     ->middleware('throttle:6,1')
     //     ->name('verification.send');
-});
 
-Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('logout');
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+});

@@ -41,5 +41,4 @@ Route::prefix('merchant')->name('merchant.')->group(function () {
     });
 
     require __DIR__ . '/merchantAuth.php';
-    Route::view('/login', 'merchant.auth.login')->name('login');
 });
