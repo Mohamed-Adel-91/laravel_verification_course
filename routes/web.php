@@ -35,7 +35,11 @@ require __DIR__ . '/auth.php';
  * Merchant Routes
  */
 Route::prefix('merchant')->name('merchant.')->group(function () {
-    Route::view('/', 'merchant.index')->name('index');
+
+    Route::middleware(['merchant'])->group(function () {
+        Route::view('/', 'merchant.index')->name('index');
+    });
+
     Route::view('/register', 'merchant.auth.register')->name('register');
     Route::view('/login', 'merchant.auth.login')->name('login');
 });
