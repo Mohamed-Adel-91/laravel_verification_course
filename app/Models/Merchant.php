@@ -13,15 +13,17 @@ class Merchant extends Authenticatable implements MustVerifyEmail
 {
     public function sendEmailVerificationNotification()
     {
-        $url = URL::temporarySignedRoute(
-            'merchant.verification.verify',
-            now()->addMinutes(60),
-            [
-                'id' => $this->getKey(),
-                'hash' => sha1($this->getEmailForVerification()),
-            ]
-        );
-        $this->notify(new MerchantEmailVerification($url));
+        if (config('verification.way') == 'email') {
+            $url = URL::temporarySignedRoute(
+                'merchant.verification.verify',
+                now()->addMinutes(60),
+                [
+                    'id' => $this->getKey(),
+                    'hash' => sha1($this->getEmailForVerification()),
+                ]
+            );
+            $this->notify(new MerchantEmailVerification($url));
+        }
     }
 
     use HasFactory, Notifiable;
