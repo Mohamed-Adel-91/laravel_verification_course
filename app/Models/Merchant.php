@@ -26,6 +26,29 @@ class Merchant extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    // ====================================== CUSTOM VERIFICATION TOKENS
+    public function generateVerificationToken()
+    {
+        if (config('verification.way') == 'cvt') {
+            $this->verification_token = Str::random(40);
+            $this->verification_token_till = now()->addMinutes(10);
+            $this->save();
+        }
+    }
+
+    public function verifyUsingVerificationToken()
+    {
+        if (config('verification.way') == 'cvt') {
+            $this->email_verified_at = now();
+            $this->verification_token = null;
+            $this->verification_token_till = null;
+            $this->save();
+        }
+    }
+    // ====================================== CUSTOM VERIFICATION TOKENS
+
+
+
     use HasFactory, Notifiable;
 
     protected $guarded = ['id'];
