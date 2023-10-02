@@ -69,6 +69,26 @@ class Merchant extends Authenticatable implements MustVerifyEmail
     // ====================================== CUSTOM VERIFICATION TOKENS
 
 
+    // ====================================== OTP
+    public function generateOTP()
+    {
+        if (config('verification.way') == 'otp') {
+            $this->otp = rand(111111, 999999);
+            $this->otp_till = now()->addMinutes(1);
+            $this->save();
+        }
+    }
+
+    public function resetOTP()
+    {
+        if (config('verification.way') == 'otp') {
+            $this->otp = null;
+            $this->otp_till = null;
+            $this->save();
+        }
+    }
+    // ====================================== OTP
+
 
     use HasFactory, Notifiable;
 
