@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchant;
 use App\Services\Twilio;
+use App\Services\Vonage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -33,6 +34,9 @@ class OTPController extends Controller
         // send OTP to SMS using provider
         if (config('verification.otp_provider') == 'twilio') {
             (new Twilio())->send($merchant);
+        }
+        if (config('verification.otp_provider') == 'vonage') {
+            (new Vonage())->send($merchant);
         }
 
         // return back with status message

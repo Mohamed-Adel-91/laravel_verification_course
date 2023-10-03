@@ -12,5 +12,5 @@ return [
 
     // OTP PROVIDERS
     // 'twilio' OR 'vonage'
-    'otp_provider' => 'twilio'
+    'otp_provider' => 'vonage'
 ];
