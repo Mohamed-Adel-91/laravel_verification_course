@@ -38,7 +38,6 @@ class RegisteredUserController extends Controller
             'response' => $request->input('g-recaptcha-response'),
         ]);
         $data = $response->json();
-        dd($data);
 
         if ($data['success'] == false) {
             throw ValidationException::withMessages(['g-recaptcha-response' => 'Invalid ReCAPTCHA']);
