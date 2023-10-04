@@ -8,7 +8,7 @@ return [
     // 'passwordless' => passwordless authentication (login)
     // 'otp' => OTP authentication  (login)
 
-    'way' => 'otp',
+    'way' => 'default',
 
     // OTP PROVIDERS
     // 'twilio' OR 'vonage'

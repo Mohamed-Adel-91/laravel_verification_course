@@ -35,7 +35,14 @@
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
-                <button class="btn btn-primary d-grid w-100">Sign up</button>
+                <button class="g-recaptcha btn btn-primary d-grid w-100" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"
+                    data-callback='onSubmit' data-action='submit'>Sign up</button>
+
+                <script>
+                    function onSubmit(token) {
+                        document.getElementById("formAuthentication").submit();
+                    }
+                </script>
             </form>
 
             <p class="text-center">

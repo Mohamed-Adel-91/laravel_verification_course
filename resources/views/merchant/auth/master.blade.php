@@ -44,6 +44,10 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('merchant-assets') }}/js/config.js"></script>
+
+    {{-- Google Rechaptcha --}}
+    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
