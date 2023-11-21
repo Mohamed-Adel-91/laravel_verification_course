@@ -1,5 +1,7 @@
 ## Laravel Verification Techniques Course Files
 
+<img src="https://img-b.udemycdn.com/course/750x422/5597934_20fb_2.jpg">
+
 **Created By :** Mahmoud Anwar
 **Email :** Engsahaly@gmail.com
 
